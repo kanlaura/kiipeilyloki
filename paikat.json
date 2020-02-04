@@ -1,1 +1,12 @@
-[{"paikka": "El Chorro", "kuvaus": "The best", "arvio": 5}]
+[
+    {
+        "paikka": "El Chorro",
+        "kuvaus": "The best",
+        "arvio": 5
+    },
+    {
+        "paikka": "Salmisaari",
+        "kuvaus": "Boulderia ja yläköysittelyä",
+        "arvio": 2
+    }
+]

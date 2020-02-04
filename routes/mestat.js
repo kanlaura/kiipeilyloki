@@ -16,6 +16,19 @@ router.get('/', function (req, res) {
 });
 
 
+router.route('/:paikka')
+	.get(function (req, res) {
+	    for (var kohde of paikat) {
+	        if (kohde.paikka == req.params.paikka) {
+	            res.json(kohde);
+	            return;
+	        }
+	    }
+	    res.json("{'msg': 'Ei sellaista kohdetta!'}");
+    })
+
+
+
 /*
 router.post('/', function (req, res) {
     var kohde=req.body

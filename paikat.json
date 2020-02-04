@@ -13,5 +13,11 @@
         "paikka": "Perro", 
         "kuvaus": "Average", 
         "arvio": 3
+    },
+    {
+        "paikka":"ALOHA",
+        "kuvaus":"Babe",
+        "arvio":2
     }
 ]
+

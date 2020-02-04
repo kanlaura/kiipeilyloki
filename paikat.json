@@ -1,5 +1,23 @@
-[{"paikka": "Kalymnos", "kuvaus": "Kreikan tunnelmaa", "arvio": 5},
-{"paikka": "Affis", "kuvaus": "Paras bouldermesta Suomessa", "arvio": 5},
-{"paikka": "El Chorro", "kuvaus": "The best", "arvio": 5},
-{ "paikka": "Fontaine Bleau", "kuvaus": "Eating baquets", "arvio": 5}
+
+[
+    {
+        "paikka": "El Chorro",
+        "kuvaus": "The best",
+        "arvio": 5
+    },
+    {
+        "paikka": "Salmisaari",
+        "kuvaus": "Boulderia ja yläköysittelyä",
+        "arvio": 2
+    }, 
+    {
+        "paikka": "Perro", 
+        "kuvaus": "Average", 
+        "arvio": 3
+    },
+    {
+        "paikka":"ALOHA",
+        "kuvaus":"Babe",
+        "arvio":2}
 ]
+

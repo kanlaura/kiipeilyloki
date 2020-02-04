@@ -2,24 +2,58 @@ var express = require('express');
 var router = express.Router();
 var fs = require("fs");
 
-var paikat = require("../paikat.json") //tämä johtaa GETin json-tiedostoon
 
-//nämä tehty POSTia varten
-// var tiedot=[];
-// fs.readFile("paikat.json", (err, data) => {
-// tiedot = JSON.parse(data);
-// })
+
+
+var paikat = require("../paikat.json") //tämä johtaa GETin json-tiedostoon (H.V. & D.B.)
+
+//tuo näkyviin koko lista (H.V. & D.B.)
 
 router.get('/', function (req, res) {
     res.send(paikat);
-
 });
+
+
+router.route('/:paikka')
+.put(function (req, res) {
+    console.log("Put: " + req.params.paikka)
+    console.dir(req.body)
+    console.dir(paikat)
+    for (let item of paikat) {
+        if (item.paikka === req.params.paikka) {
+            const change = req.body;
+            if (change.arvio ) {
+                item.arvio=change.arvio
+                console.log(item.arvio);
+            }
+            if (change.kuvaus ) {
+                item.kuvaus=change.kuvaus
+                console.log(item.kuvaus);
+            }
+            fs.writeFile("paikat.json", JSON.stringify(paikat),(err)=> {
+                if (err) throw err;
+            res.json({Viesti:'Muutettu'});
+            return;
+            })
+            }
+        }
+        res.status(404);
+        res.json("{'msg': 'Tämän nimistä paikkaa ei löytynyt!'}");
+    });
+
+
+//lisää uusi kohde (H.V. & D.B.)
 router.post("/", function(req,res) {
     let uusi = req.body;
     paikat.push(uusi);
+    fs.writeFile("paikat.json", JSON.stringify(paikat),(err)=> {
+        if (err) throw err;
+        res.end(respdata);
+    })
     res.status(201).json(uusi);
 })
 
+//hae paikannimellä (H.V. & D.B.)
 router.route('/:paikka')
 	.get(function (req, res) {
 	    for (var kohde of paikat) {
@@ -28,21 +62,8 @@ router.route('/:paikka')
 	            return;
 	        }
 	    }
-	    res.json("{'msg': 'Ei sellaista kohdetta!'}");
+	    res.json("{'msg': 'Ei sellaista kohdetta!'}"); //jos haetun nimistä paikkaa ei löydy (H.V. & D.B.)
     })
-    
-
-
-    /*
-    router.post('/', function (req, res) {
-        var kohde=req.body
-        paikat.push(kohde)
-        //fs että tiedot tallentuu jsoniin
-        fs.writeFile("paikat.json", JSON.stringify(tiedot), () => { console.log("Tiedot tallennettu")
-        })
-        res.send('Got a POST request')
-    });
-    */
 
     .delete('/:paikka', function (req, res, next) {
         for (let kohde in paikat) {
@@ -56,3 +77,4 @@ router.route('/:paikka')
     })
     
 module.exports = router;
+

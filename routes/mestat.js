@@ -14,6 +14,23 @@ var paikat = require("../paikat.json") //tämä johtaa GETin json-tiedostoon
 router.get('/', function (req, res) {
     res.send(paikat);
 });
+router.post("/", function(req,res) {
+    let uusi = req.body;
+    paikat.push(uusi);
+    res.status(201).json(uusi);
+})
+
+router.route('/:paikka')
+	.get(function (req, res) {
+	    for (var kohde of paikat) {
+	        if (kohde.paikka == req.params.paikka) {
+	            res.json(kohde);
+	            return;
+	        }
+	    }
+	    res.json("{'msg': 'Ei sellaista kohdetta!'}");
+    })
+    
 
 
 /*

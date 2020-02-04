@@ -8,8 +8,6 @@ var paikat = require("../paikat.json") //tämä johtaa GETin json-tiedostoon (H.
 router.get('/', function (req, res) {
     res.send(paikat);
 
-})
-
 });
 
 //lisää uusi kohde (H.V. & D.B.)
@@ -18,7 +16,7 @@ router.post("/", function(req,res) {
     paikat.push(uusi);
     fs.writeFile("paikat.json", JSON.stringify(paikat),(err)=> {
         if (err) throw err;
-        res.end(respdata);
+        res.end("postattu");
     })
     res.status(201).json(uusi);
 })
@@ -35,7 +33,7 @@ router.route('/:paikka')
 	    res.json("{'msg': 'Ei sellaista kohdetta!'}"); //jos haetun nimistä paikkaa ei löydy (H.V. & D.B.)
     })
 
-    .delete('/:paikka', function (req, res, next) {
+    .delete(function (req, res, next) {
         for (let kohde in paikat) {
             if (paikat[kohde].paikka == req.params.paikka) {
                 paikat.splice(kohde, 1);

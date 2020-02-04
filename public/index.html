@@ -13,10 +13,10 @@
     <br>
     <div id="uusikohde">
         <h2>Lisää kohde toivelistalle</h2>
-        <label for="nimi">Kohteen nimi</label>
-        <input type="text" id="nimi" name="nimi">
+        <label for="uusiNimi">Kohteen nimi</label>
+        <input type="text" id="uusiNimi" name="uusiNimi">
         <br><br>
-        <button type="button" id="lisaa">Lisää arvio</button>
+        <button type="button" id="lisaa">Lisää kohde</button>
         <br><br>
         <hr>
         <br>
@@ -36,14 +36,15 @@
     <div id="arvioi">
         <h2>Arvioi kohde</h2>
         <br>
-        <label for="nimi">Kohteen nimi</label>
-        <input type="text" id="nimi" name="nimi">
+        <label for="etsiNimi">Kohteen nimi</label>
+        <input type="text" id="etsiNimi" name="etsiNimi">
+        <button id="etsi">Etsi kohde</button>
         <br><br>
-        <label for="kuvaus">Kohdekuvaus</label>
-        <input type="text" id="kuvaus" name="kuvaus">
+        <label for="uusiKuvaus">Kohdekuvaus</label>
+        <input type="text" id="uusiKuvaus" name="uusiKuvaus">
         <br><br>
-        <label for="arvio">Arvio 0-5</label>
-        <input type="number" id="arvio" name="arvio">
+        <label for="uusiArvio">Arvio 0-5</label>
+        <input type="number" id="uusiArvio" name="uusiArvio">
         <br><br>
         <button type="button" id="arvioi">Lisää arvio</button>
     </div>
@@ -53,11 +54,13 @@
         <h2>Poista kohde</h2>
         <br>
         <label for="nimi">Kohteen nimi</label>
-        <input type="text" id="nimi" name="nimi">
+        <input type="text" id="poistaNimi" name="poistaNimi">
         <br><br>
-        <button type="button" id="arvioi">Lisää arvio</button>
+        <button type="button" id="poistaNappi">Poista kohde</button>
+        <br><br>
+        <div id="poistaVastaus"></div>
     </div>
-    <script src="../public/javascripts/default.js"></script>
+    <script src="javascripts/default.js"></script>
 </body>
 
 </html>

@@ -4,55 +4,39 @@ var fs = require("fs");
 
 var paikat = require("../paikat.json") //tämä johtaa GETin json-tiedostoon
 
-//nämä tehty POSTia varten
-// var tiedot=[];
-// fs.readFile("paikat.json", (err, data) => {
-// tiedot = JSON.parse(data);
-// })
-
 router.get('/', function (req, res) {
     res.send(paikat);
 
 });
-router.post("/", function(req,res) {
+router.post("/", function (req, res) {
     let uusi = req.body;
     paikat.push(uusi);
     res.status(201).json(uusi);
 })
 
 router.route('/:paikka')
-	.get(function (req, res) {
-	    for (var kohde of paikat) {
-	        if (kohde.paikka == req.params.paikka) {
-	            res.json(kohde);
-	            return;
-	        }
-	    }
-	    res.json("{'msg': 'Ei sellaista kohdetta!'}");
-    })
-    
-
-
-    /*
-    router.post('/', function (req, res) {
-        var kohde=req.body
-        paikat.push(kohde)
-        //fs että tiedot tallentuu jsoniin
-        fs.writeFile("paikat.json", JSON.stringify(tiedot), () => { console.log("Tiedot tallennettu")
-        })
-        res.send('Got a POST request')
-    });
-    */
-
-    .delete('/:paikka', function (req, res, next) {
-        for (let kohde in paikat) {
-            if (paikat[kohde].paikka == req.params.paikka) {
-                paikat.splice(kohde, 1);
-                res.send('kohde poistettu');
+    .get(function (req, res) {
+        for (var kohde of paikat) {
+            if (kohde.paikka == req.params.paikka) {
+                res.json(kohde);
                 return;
             }
         }
-        res.send('paikkaa ei löytynyt');
+        res.json("{'msg': 'Ei sellaista kohdetta!'}");
     })
-    
+
+    .delete(function (req, res, next) {
+        for (let kohde in paikat) {
+            if (paikat[kohde].paikka == req.params.paikka) {
+                paikat.splice(kohde, 1);
+
+                fs.writeFile('paikat.json', JSON.stringify(paikat), (err) => {
+                })
+                res.json('kohde poistettu');
+                return;
+            }
+        }
+        res.json('kohdetta ei löytynyt');
+    })
+
 module.exports = router;

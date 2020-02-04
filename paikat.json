@@ -1,3 +1,4 @@
+
 [
     {
         "paikka": "El Chorro",
@@ -8,5 +9,11 @@
         "paikka": "Salmisaari",
         "kuvaus": "Boulderia ja yläköysittelyä",
         "arvio": 2
+    }, 
+    {
+        "paikka": "Perro", 
+        "kuvaus": "Average", 
+        "arvio": 3
     }
 ]
+

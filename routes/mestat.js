@@ -18,26 +18,25 @@ router.get('/', function (req, res) {
 
 
 router.route('/:paikka')
-.put(function (req, res) {
-    console.log("Put: " + req.params.paikka)
-    console.dir(req.body)
-    console.dir(paikat)
-    for (let item of paikat) {
-        if (item.paikka === req.params.paikka) {
-            const change = req.body;
-            if (change.arvio ) {
-                item.arvio=change.arvio
-                console.log(item.arvio);
-            }
-            if (change.kuvaus ) {
-                item.kuvaus=change.kuvaus
-                console.log(item.kuvaus);
-            }
-            fs.writeFile("paikat.json", JSON.stringify(paikat),(err)=> {
-                if (err) throw err;
-            res.json({Viesti:'Muutettu'});
-            return;
-            })
+    .put(function (req, res) {
+        console.log("Put: " + req.params.paikka)
+        // console.dir(req.body)
+        // console.dir(paikat)
+        for (let item of paikat) {
+            if (item.paikka === req.params.paikka) {
+                const change = req.body;
+                if (change.arvio) {
+                    item.arvio = change.arvio
+                    console.log(item.arvio);
+                }
+                if (change.kuvaus) {
+                    item.kuvaus = change.kuvaus
+                    console.log(item.kuvaus);
+                }
+                fs.writeFile("paikat.json", JSON.stringify(paikat), (err) => {
+                })
+                res.json('Muutettu');
+                return;
             }
         }
         res.status(404);
@@ -46,10 +45,10 @@ router.route('/:paikka')
 
 
 //lisää uusi kohde (H.V. & D.B.)
-router.post("/", function(req,res) {
+router.post("/", function (req, res) {
     let uusi = req.body;
     paikat.push(uusi);
-    fs.writeFile("paikat.json", JSON.stringify(paikat),(err)=> {
+    fs.writeFile("paikat.json", JSON.stringify(paikat), (err) => {
         if (err) throw err;
         res.end(respdata);
     })
@@ -58,17 +57,17 @@ router.post("/", function(req,res) {
 
 //hae paikannimellä (H.V. & D.B.)
 router.route('/:paikka')
-	.get(function (req, res) {
-	    for (var kohde of paikat) {
-	        if (kohde.paikka == req.params.paikka) {
-	            res.json(kohde);
-	            return;
-	        }
-	    }
-	    res.json("{'msg': 'Ei sellaista kohdetta!'}"); //jos haetun nimistä paikkaa ei löydy (H.V. & D.B.)
+    .get(function (req, res) {
+        for (var kohde of paikat) {
+            if (kohde.paikka == req.params.paikka) {
+                res.json(kohde);
+                return;
+            }
+        }
+        res.json("{'msg': 'Ei sellaista kohdetta!'}"); //jos haetun nimistä paikkaa ei löydy (H.V. & D.B.)
     })
 
-    .delete('/:paikka', function (req, res, next) {
+    .delete(function (req, res, next) {
         for (let kohde in paikat) {
             if (paikat[kohde].paikka == req.params.paikka) {
                 paikat.splice(kohde, 1);
@@ -78,6 +77,6 @@ router.route('/:paikka')
         }
         res.send('paikkaa ei löytynyt');
     })
-    
+
 module.exports = router;
 

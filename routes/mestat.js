@@ -62,7 +62,7 @@ router.post("/", function (req, res) {
     paikat.push(uusi);
     fs.writeFile("paikat.json", JSON.stringify(paikat), (err) => {
         if (err) throw err;
-        res.end(respdata);
+        res.end("postattu");
     })
     res.status(201).json(uusi);
 })

@@ -96,7 +96,8 @@ function listaaArviot() {
             return;
         })
 }
-
+const bingoCard = document.getElementById('bingoCard');
+bingoCard.addEventListener('click', checkNumber);
 
 document.querySelectorAll('.aKohde').forEach(function (item) {
     item.addEventListener('click', function (event) {

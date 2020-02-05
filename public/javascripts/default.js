@@ -75,11 +75,29 @@ function listaaArviot() {
             if (json == `{'msg': 'Ei sellaista kohdetta!'}`) {
                 console.log(`Error`);
             } else {
-                console.log(json);
                 for (let i = 0; i < json.length; i++) {
                     const paikka = json[i].paikka;
                     const kuvaus = json[i].kuvaus;
                     const arvio = json[i].arvio;
+                    let tahtiArvio;
+
+                    switch (arvio) {
+                        case 1:
+                            tahtiArvio = '★'
+                            break;
+                        case 2:
+                            tahtiArvio = '★★'
+                            break;
+                        case 3:
+                            tahtiArvio = '★★★'
+                            break;
+                        case 4:
+                            tahtiArvio = '★★★★'
+                            break;
+                        case 5:
+                            tahtiArvio = '★★★★★'
+                            break;
+                    }
 
                     const uusiLI = document.createElement('li');
                     const uusiUL = document.createElement('ul');
@@ -87,8 +105,8 @@ function listaaArviot() {
                     const uusiArvio = document.createElement('li');
 
                     uusiLI.innerHTML = `${paikka}`
-                    uusiKuvaus.innerHTML = `${kuvaus}`;
-                    uusiArvio.innerHTML = `${arvio}`;
+                    uusiKuvaus.innerHTML = `Kohteen kuvaus: ${kuvaus}`;
+                    uusiArvio.innerHTML = `Kohteen arvio: ${tahtiArvio}`;
 
                     arvostelut.appendChild(uusiLI);
                     uusiLI.appendChild(uusiUL);
@@ -103,6 +121,17 @@ function listaaArviot() {
             }
             return;
         })
+}
+
+arvostelut.addEventListener('click', naytaKuvaus);
+
+function naytaKuvaus(event) {
+    const kuvaus = event.target.lastChild;
+    if (kuvaus.style.display == 'none') {
+        kuvaus.style.display = 'block';
+    } else {
+        kuvaus.style.display = 'none';
+    }
 }
 
 

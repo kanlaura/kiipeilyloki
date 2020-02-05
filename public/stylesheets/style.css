@@ -18,5 +18,11 @@ a {
 }
 
 .aKohde {
-  font-size: larger;
+  cursor: pointer;
+  font-size: x-large;
+}
+
+.aKuvaus,
+.aArvio {
+  font-size: large;
 }

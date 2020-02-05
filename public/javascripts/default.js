@@ -1,17 +1,21 @@
 //inputit
 const pNimi = document.getElementById('poistaNimi');
 const eNimi = document.getElementById('etsiNimi');
+const uusiKuvaus = document.getElementById('uusiKuvaus');
+const uusiArvio = document.getElementById('uusiArvio');
 
 //napit
 const poistaNappi = document.getElementById('poistaNappi');
 const etsiNappi = document.getElementById('etsi');
+const arvioNappi = document.getElementById('arvioi');
 
 //kentät
 const pVastaus = document.getElementById('poistaVastaus');
 
 //eventlistenerit
-poistaNappi.addEventListener('click', poistaKohde);
+// poistaNappi.addEventListener('click', poistaKohde);
 etsiNappi.addEventListener('click', etsiKohde);
+arvioNappi.addEventListener('click', muutaArviota);
 
 
 function poistaKohde() {
@@ -33,7 +37,9 @@ function poistaKohde() {
 };
 
 function etsiKohde() {
+
     const kohde = eNimi.value
+    
     fetch(`http://localhost:3000/api/mestat/${kohde}`)
     .then(function (res) {
         return res.json();
@@ -42,39 +48,23 @@ function etsiKohde() {
         if (json == `{'msg': 'Ei sellaista kohdetta!'}`) {
             console.log(`Kohdetta ei löytynyt`);
         } else {
-            console.log(json);
+            uusiKuvaus.value += json.kuvaus;
+            uusiArvio.value += json.arvio;
+            console.log(json.paikka);
         }
         return;
     })
 }
 
-document.getElementById("etsi").addEventListener("click", ArvioKohde);
+function muutaArviota(){
+    let paivitettyKuvaus={kuvaus:uusiKuvaus.value, arvio:uusiArvio.value}
+    const kohde = eNimi.value;
 
-var paikkaId;
-
-/// TÄSTÄ JATKUUUUUUU
-function arvioiKohde(event) {
-
-    fetch("/api/mestat/"+paikkaId).then(res => res.json()).then(paikka=>{
-        console.dir(paikka);
-        document.getElementById("uusiKuvaus").value=paikka.kuvaus;
-        document.getElementById("uusiArvio").value=paikka.arvio;
-    })
-    document.getElementById("arvioi").style.display="block";
-}
-
-function savebeer(){
-    let uusiKuvaus = document.getElementById("uusiKuvaus").value;
-    let uusiArvio = document.getElementById("uusiArvio").value;
-    let editoidutPaikat = new Paikka(uusiKuvaus, uusiArvio, paikkaId);
-    console.dir()
-    fetch('/api/beers/'+beerid, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(editedbeer)
-    }).then(res => res.json()).then(message => {
-        console.dir(message);
-        document.getElementById("editform").style.display="none";
-        getbeers();
-    })
+        fetch(`http://localhost:3000/api/mestat/${kohde}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(paivitettyKuvaus)
+        }).then(res => res.json()).then(message => {                   
+            console.dir(message);
+        })
 }

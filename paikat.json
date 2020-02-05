@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-[{"paikka":"El Chorro","kuvaus":"The best","arvio":5},{"paikka":"Salmisaari","kuvaus":"Boulderia ja yläköysittelyä","arvio":2},{"paikka":"Perro","kuvaus":"Ihan kivat seinät","arvio":3},{"paikka":"ALOHA","kuvaus":"Babe","arvio":2}]
-=======
-[{"paikka":"El Chorro","kuvaus":"The best","arvio":5},{"paikka":"Salmisaari","kuvaus":"Muuta tämä teksti","arvio":3},{"paikka":"Perro","kuvaus":"Boulderia ja yläköysittelyä","arvio":3},{"paikka":"ALOHA","kuvaus":"Babe","arvio":2}]
->>>>>>> marjut
+[{"paikka":"El Chorro","kuvaus":"The best","arvio":"5"},{"paikka":"Salmisaari","kuvaus":"Muuta tämä teksti","arvio":4},{"paikka":"Perro","kuvaus":"tosi kiva","arvio":"5"},{"paikka":"ALOHA","kuvaus":"Babe","arvio":2}]

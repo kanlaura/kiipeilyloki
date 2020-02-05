@@ -13,8 +13,13 @@ router.get('/', function (req, res) {
 router.route('/:paikka')
     .put(function (req, res) {
         console.log("Put: " + req.params.paikka)
+<<<<<<< HEAD
         console.dir(req.body)
         console.dir(paikat)
+=======
+        // console.dir(req.body)
+        // console.dir(paikat)
+>>>>>>> marjut
         for (let item of paikat) {
             if (item.paikka === req.params.paikka) {
                 const change = req.body;
@@ -27,10 +32,16 @@ router.route('/:paikka')
                     console.log(item.kuvaus);
                 }
                 fs.writeFile("paikat.json", JSON.stringify(paikat), (err) => {
+<<<<<<< HEAD
                     if (err) throw err;
                     res.json({ Viesti: 'Muutettu' });
                     return;
                 })
+=======
+                })
+                res.json('Muutettu');
+                return;
+>>>>>>> marjut
             }
         }
         res.status(404);
@@ -51,7 +62,10 @@ router.post("/", function (req, res) {
 
 //hae paikannimellä (H.V. & D.B.)
 router.route('/:paikka')
+<<<<<<< HEAD
 
+=======
+>>>>>>> marjut
     .get(function (req, res) {
         for (var kohde of paikat) {
             if (kohde.paikka == req.params.paikka) {

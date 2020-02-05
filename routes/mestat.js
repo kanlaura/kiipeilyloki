@@ -33,6 +33,7 @@ router.route('/:paikka')
     })
 
     .put(function (req, res) {
+        console.log("Put: " + req.params.paikka)
         for (let item of paikat) {
             if (item.paikka === req.params.paikka) {
                 const change = req.body;
@@ -44,7 +45,7 @@ router.route('/:paikka')
                     item.kuvaus = change.kuvaus
                     // console.log(item.kuvaus);
                 }
-                fs.writeFile("paikat.json", JSON.stringify(paikat), (err) => { 
+                fs.writeFile("paikat.json", JSON.stringify(paikat), (err) => {
                 })
                 res.json('Muutettu');
                 return;

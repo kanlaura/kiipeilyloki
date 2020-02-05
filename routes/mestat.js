@@ -13,10 +13,7 @@ router.get('/', function (req, res) {
 router.route('/:paikka')
     .put(function (req, res) {
         console.log("Put: " + req.params.paikka)
-<<<<<<< HEAD
-=======
 
->>>>>>> master
         for (let item of paikat) {
             if (item.paikka === req.params.paikka) {
                 const change = req.body;

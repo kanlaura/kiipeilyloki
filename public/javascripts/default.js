@@ -98,14 +98,14 @@ function listaaArviot() {
 }
 
 
-// document.querySelectorAll('.aKohde').forEach(function (item) {
-//     item.addEventListener('click', function (event) {
-//         console.log('jee jee')
-//         const kuvaus = document.getElementsByClassName('aLista');
-//         if (kuvaus.style.display !== 'none') {
-//             kuvaus.style.display = 'none';
-//         } else {
-//             kuvaus.style.display = 'inline';
-//         }
-//     });
-// });
+document.querySelectorAll('.aKohde').forEach(function (item) {
+    item.addEventListener('click', function (event) {
+        console.log('jee jee')
+        const kuvaus = document.getElementsByClassName('aLista');
+        if (kuvaus.style.display !== 'none') {
+            kuvaus.style.display = 'none';
+        } else {
+            kuvaus.style.display = 'inline';
+        }
+    });
+});

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./stylesheets/style.css">
     <title>Kiipeilyloki</title>
 </head>
 <body>
@@ -31,7 +32,7 @@
     </div>
     <br>
     <hr>
-    <div id="arvioi">
+    <div id="arvioilomake">
         <h2>Arvioi kohde</h2>
         <br>
         <label for="etsiNimi">Kohteen nimi</label>
@@ -39,12 +40,31 @@
         <button id="etsi">Etsi kohde</button>
         <br><br>
         <label for="uusiKuvaus">Kohdekuvaus</label>
+<<<<<<< HEAD
         <input type="text" id="uusiKuvaus" name="uusiKuvaus">
         <br><br>
         <label for="uusiArvio">Arvio 0-5</label>
         <input type="number" id="uusiArvio" name="uusiArvio">
+=======
+        <input type="text" id="uusiKuvaus" name="uusiKuvaus" value=""></input>
+        <br><br>
+        <label for="uusiArvio">Arvio 0-5</label>
+        <input type="number" id="uusiArvio" name="uusiArvio" value=""></input>
+>>>>>>> master
         <br><br>
         <button type="button" id="arvioi">Lisää arvio</button>
+    </div>
+    <br>
+    <hr>
+    <div id="arvioidut">
+        <h2>Arvioidut kohteet</h2>
+        <ul id="arvostelut">
+            <li class="aKohde">Kohde</li>
+            <ul class="aLista">
+                <li class="aKuvaus">Kuvaus</li>
+                <li class="aArvio">Arvio</li>
+            </ul>
+        </ul>
     </div>
     <br>
     <hr>
@@ -54,8 +74,18 @@
         <label for="nimi">Kohteen nimi</label>
         <input type="text" id="poistaNimi" name="poistaNimi">
         <br><br>
+<<<<<<< HEAD
         <button type="button" id="poista">Lisää arvio</button>
     </div>
     <script src="javascripts/default.js"></script>
 </body>
 </html>
+=======
+        <button type="button" id="poistaNappi">Poista kohde</button>
+        <br><br>
+        <div id="poistaVastaus"></div>
+    </div>
+    <script src="javascripts/default.js"></script>
+</body>
+</html>
+>>>>>>> master

@@ -12,7 +12,7 @@
     {
         "paikka": "Perro",
         "kuvaus": "jee jee",
-        "arvio": 1
+        "arvio": 5
     },
     {
         "paikka": "ALOHA",
@@ -28,5 +28,20 @@
         "paikka": "Rocky mountains",
         "kuvaus": "Tosi kivistä",
         "arvio": 3
+    },
+    {
+        "paikka": "Seinä",
+        "kuvaus": "",
+        "arvio": 0
+    },
+    {
+        "paikka": "Kallio",
+        "kuvaus": "",
+        "arvio": 0
+    },
+    {
+        "paikka": "Vuori",
+        "kuvaus": "",
+        "arvio": 0
     }
 ]

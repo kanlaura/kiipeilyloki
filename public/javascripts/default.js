@@ -8,19 +8,23 @@ const uusiArvio = document.getElementById('uusiArvio');
 const poistaNappi = document.getElementById('poistaNappi');
 const etsiNappi = document.getElementById('etsi');
 const arvioiNappi = document.getElementById('arvioi');
-
+const lisaaNappi = document.getElementById("lisaa");
 
 //kentät
 const pVastaus = document.getElementById('poistaVastaus');
 const arvostelut = document.getElementById('arvostelut');
 const toiveLista = document.getElementById("output");
+const toive = document.getElementById("output");
+const uusiNimi = document.getElementById("uusiNimi");
+const eiKohdetta = document.getElementById("eikohdetta");
+const arvioVirhe = document.getElementById("arvioVirhe");
 
 //eventlistenerit
 toiveLista.addEventListener('click', poistaKohde);
 etsiNappi.addEventListener('click', etsiKohde);
 arvioiNappi.addEventListener('click', muutaArviota);
 arvostelut.addEventListener('click', naytaKuvaus);
-document.getElementById("lisaa").addEventListener("click", addMesta);
+lisaaNappi.addEventListener("click", addMesta);
 
 //Toivelista näkyy kun käyttäjä tulee sivulle (H.V. ja D.B)
 function myFunction() {
@@ -34,8 +38,9 @@ function myFunction() {
                     output += `<li><p>${paikat[i].paikka}</p><button id="poistaNappi">Deleta</button></li>`
                 };
                 //console.log(paikat[i].paikka)
+
             }
-            document.getElementById("output").innerHTML = output;
+            toive.innerHTML = output;
         })
 }
 
@@ -44,7 +49,7 @@ myFunction();
 //käyttäjä lisää selaimessa uuden kohteen listalle.
 //Tämä scripti lisää sen POStilla paikat.jsoniin (H.V. ja D.B)
 function addMesta() {
-    let title = document.getElementById("uusiNimi").value
+    let title = uusiNimi.value
     fetch("./api/mestat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -52,10 +57,10 @@ function addMesta() {
     })
         .then(res => res.json())
 
-
     //tämä on GET pyyntö palauttaa lisäyksen jälkeen näkyviin toivelistalle paikat, 
     //jolla ei ole arviota (H.V. ja D.B)
     myFunction();
+    uusiNimi.value ="";
 }
 
 
@@ -97,6 +102,7 @@ function etsiKohde() {
         .then((json) => {
             if (json == `{'msg': 'Ei sellaista kohdetta!'}`) {
                 console.log(`Kohdetta ei löytynyt`);
+                eiKohdetta.innerHTML = "Kohdetta ei löytynyt."
             } else {
                 uusiKuvaus.value = json.kuvaus;
                 uusiArvio.value = json.arvio;
@@ -110,6 +116,10 @@ function etsiKohde() {
 function muutaArviota() {
     const kohde = eNimi.value
     let paivitettyKuvaus = { kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) }
+
+    if (uusiArvio.value <1 || uusiArvio.value>5) {
+        arvioVirhe.innerHTML=`HUOM! Arvion pitää olla 1 ja 5 välillä`
+    } else {
 
     fetch(`http://localhost:3000/api/mestat/${kohde}`)
         .then(function (res) {
@@ -132,13 +142,14 @@ function muutaArviota() {
                 }).then(res => res.json()).then(message => {
                     console.log(message);
                 })
+                eiKohdetta.innerHTML="Kohde haettu."
             }
             listaaArviot();
             myFunction();
             return;
         })
-
-}
+        arvioVirhe.innerHTML="";
+}}
 
 //Listaa arvioidut kohteet kohtaan kaikki arvioidut kohteet
 function listaaArviot() {
@@ -197,6 +208,10 @@ function listaaArviot() {
                     }
                 }
             }
+            //Nollaa kentät nappipanalluksen jälkeen(DB)
+            eNimi.value = ""
+            uusiKuvaus.value = ""
+            uusiArvio.value = ""
             return;
         })
 }

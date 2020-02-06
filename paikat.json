@@ -1,1 +1,32 @@
-[{"paikka":"El Chorro","kuvaus":"The best","arvio":5},{"paikka":"Salmisaari","kuvaus":"Kolme kerrosta","arvio":4},{"paikka":"Perro","kuvaus":"Average","arvio":4},{"paikka":"ALOHA","kuvaus":"Babe","arvio":2},{"paikka":"Keilaniemi","kuvaus":"Ei täällä voi kiivetä","arvio":1},{"paikka":"Jee jee","kuvaus":"sdgjk","arvio":5}]
+[
+    {
+        "paikka": "El Chorro",
+        "kuvaus": "The best",
+        "arvio": "5"
+    },
+    {
+        "paikka": "Salmisaari",
+        "kuvaus": "Boulderia ja yläköysittelyä",
+        "arvio": 2
+    },
+    {
+        "paikka": "Perro",
+        "kuvaus": "Average",
+        "arvio": 3
+    },
+    {
+        "paikka": "ALOHA",
+        "kuvaus": "Babe",
+        "arvio": 2
+    },
+    {
+        "paikka": "Keilaniemi",
+        "kuvaus": "Kylmää",
+        "arvio": "2"
+    },
+    {
+        "paikka": "Lauttasaari",
+        "kuvaus": "",
+        "arvio": ""
+    }
+]

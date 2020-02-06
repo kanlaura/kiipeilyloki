@@ -9,7 +9,6 @@ const poistaNappi = document.getElementById('poistaNappi');
 const etsiNappi = document.getElementById('etsi');
 const arvioiNappi = document.getElementById('arvioi');
 
-
 //kentät
 const pVastaus = document.getElementById('poistaVastaus');
 const arvostelut = document.getElementById('arvostelut');

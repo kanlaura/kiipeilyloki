@@ -46,18 +46,20 @@
                 <div id="arvioilomake_labels">
                     <label for="etsiNimi">Kohteen nimi</label><br>
                     <label for="uusiKuvaus">Kohdekuvaus</label><br>
-                    <label for="uusiArvio">Arvio 0-5</label><br>
+                    <label for="uusiArvio" >Arvio 1-5</label><br>
                 </div>
                 <div id="arvioilomake_inputs">
                     <input type="text" id="etsiNimi" name="etsiNimi"><br>
                     <input type="text" id="uusiKuvaus" name="uusiKuvaus" value=""></input><br>
-                    <input type="number" id="uusiArvio" name="uusiArvio" value=""></input><br>
+                    <input type="number" id="uusiArvio" name="uusiArvio" min="1" max="5" value=""></input><br>
                     <button type="button" id="arvioi">Lisää arvio</button>
+                    <span id="arvioLisatty"></span>
                     <br>
                     <span id="arvioVirhe"></span>
-                    <span id="eikohdetta"></span>
+                    
                 </div>
                 <button type="button" id="etsi">Etsi kohde...</button>
+                <span id="eikohdetta"></span>
             </div>
         </div>
         <script src="javascripts/default.js"></script>

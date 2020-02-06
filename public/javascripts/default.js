@@ -17,6 +17,7 @@ const toive = document.getElementById("output");
 const uusiNimi = document.getElementById("uusiNimi");
 const eiKohdetta = document.getElementById("eikohdetta");
 const arvioVirhe = document.getElementById("arvioVirhe");
+const arvioLisatty = document.getElementById("arvioLisatty");
 
 //eventlistenerit
 toive.addEventListener('click', poistaKohde);
@@ -125,10 +126,17 @@ function etsiKohde() {
                     console.log(`Kohdetta ei löytynyt`);
                     eiKohdetta.innerHTML = "Kohdetta ei löytynyt."
                 } else {
-                    uusiKuvaus.value = json.kuvaus;
-                    uusiArvio.value = json.arvio;
-                    console.log(json.paikka);
-                    console.log(json.arvio);
+                    if (json.arvio == 0){
+                        uusiArvio.value = null
+                        }                    
+                        else {
+                            uusiKuvaus.value=json.kuvaus
+                            uusiArvio.value=json.arvio
+                        }
+                    // console.log(json.paikka);
+                    // console.log(json.arvio);
+                    eiKohdetta.innerHTML="Kohde haettu.";
+                    arvioLisatty.innerHTML="";
                 }
                 return;
             })
@@ -173,6 +181,8 @@ function muutaArviota() {
                     return;
                 })
             arvioVirhe.innerHTML = "";
+            eiKohdetta.innerHTML="";
+            arvioLisatty.innerHTML="Kohde päivitetty listaan.";
         }
     }
 }

@@ -7,7 +7,7 @@ const uusiArvio = document.getElementById('uusiArvio');
 //napit
 const poistaNappi = document.getElementById('poistaNappi');
 const etsiNappi = document.getElementById('etsi');
-const arvioNappi = document.getElementById('arvioi');
+const arvioiNappi = document.getElementById('arvioi');
 
 //kentät
 const pVastaus = document.getElementById('poistaVastaus');
@@ -15,7 +15,7 @@ const pVastaus = document.getElementById('poistaVastaus');
 //eventlistenerit
 // poistaNappi.addEventListener('click', poistaKohde);
 etsiNappi.addEventListener('click', etsiKohde);
-arvioNappi.addEventListener('click', muutaArviota);
+arvioiNappi.addEventListener('click', muutaArviota);
 
 
 function poistaKohde() {

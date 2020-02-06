@@ -1,8 +1,75 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 2em;
+  font-family:'Nunito Sans', sans-serif;
+  justify-items: center;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+  background-image: "Perro.jpg";
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
+h1 {
+  font-size: 42px;
+  margin-left: 80px;
+}
+#wrapper{
+  display:grid;
+  background-color: hotpink;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(7, fr);
+  align-items: inherit;
+  grid-gap: 10px;
+  box-sizing: border-box;
+}
 a {
   color: #00B7FF;
 }
+#poista{
+  background-color: #00B7FF;
+  grid-row: 2;
+}
+#arvioilomake {
+  background-color: red;
+}
+#toivelista{
+  background-color: greenyellow;
+  grid-row: 2 / span 3;
+  grid-column: 1  / span 2;
+  padding: 50px;
+}
+#toivelista li {
+  list-style: none;
+  line-height: 32px;
+  font-size: 28px;
+}
+#toivelista h2 {
+  margin-left: 35px;
+  font-size: 42px;
+}
+#LisaaLoki{
+  background-color: indianred;
+  grid-row: 1;
+  grid-column: 1  / span 2;
+}
+#uusikohde {
+  margin-left: 80px;
+}
+#uusikohde > input {
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+#uusikohde > button {
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color:white;
+  color:black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+  margin-left: 10px;
+}
+

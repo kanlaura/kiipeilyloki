@@ -1,8 +1,164 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html, body {
+  height: 100%;
+  margin: 0;
 }
+body {
+  /* padding: 20px; */
+  margin: 0;
+  /* font-family:'Nunito Sans', sans-serif;
+  justify-items: center;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center; */
+  font-family: 'Crimson Text', serif;
+  font-weight: 400;
 
+}
+h1 {
+  font-size: 42px;
+  margin-left: 80px;
+}
+#wrapper{
+  display:grid;
+  /* background-color: hotpink; */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(7, fr);
+  grid-gap: 10px;
+  box-sizing: border-box;
+}
 a {
   color: #00B7FF;
+}
+#poista{
+  background-color: #00B7FF;
+  grid-row: 2;
+}
+#arvioilomake {
+  background-color: red;
+}
+#arvioidut {
+  /* background-color: yellow; */
+  grid-row: 2 / span 3;
+  grid-column: 3 / spans 2;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+/* #card {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+  grid-row: 2;
+  grid-column: 1 / span 4;
+} */
+#toivelista{
+  /* background-color: greenyellow; */
+  grid-row: 2 / span 3;
+  grid-column: 1 /span 2;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+  /* background-color: teal; */
+}
+#arvioilomake {
+  grid-row: 5 ;
+  grid-column: 1 / span 4;
+  padding: 50px;
+  background-color: rgb(64, 64, 64);
+  color: white;
+}
+#toivelista li {
+  list-style: none;
+  line-height: 32px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2;
+  font-family:'Nunito Sans', sans-serif;
+  margin-left: 200px;
+}
+#toivelista h2 {
+  margin-left: 35px;
+  font-size: 28px;
+  text-decoration: underline;
+  letter-spacing: 5;
+  font-weight: 400;
+}
+#arvioidut h2 {
+  margin-left: 35px;
+  font-size: 28px;
+  text-decoration: underline;
+  letter-spacing: 5;
+  font-weight: 400;
+}
+#arvioidut li {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2;
+  font-family:'Nunito Sans', sans-serif;
+  margin-left: 200px;
+}
+
+#uusikohde {
+  padding: 30px;
+  margin-left: 50%;
+  grid-column: 2 / span 5; 
+  grid-row: 1;
+  color:black;
+  font-family:'Nunito Sans', sans-serif;
+  font-weight: 700;
+}
+#kiipeilyLoki {
+  background-image: url("../images/Perro.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* min-width: 100%; */
+  margin: 0 auto;
+  color: white;
+  /* min-height: 200px; */
+  grid-row: 1;
+  width: 100%;
+  grid-column: 1 / span 4;
+  }
+ #kiipeilyloki_hederi{
+color: white;
+grid-column: 1 / span 2;
+grid-row: 1;
+ margin-top: 50px; 
+font-family: 'Crimson Text', serif;
+    font-size: 65px;
+  } 
+#uusikohde > input {
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+} 
+#uusikohde > button {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color:black;
+  color:white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+  margin-left: 10px;
+}
+
+/* TOISET MUUTOKSET // TARKASTA */
+
+.aKohde,
+.aKuvaus,
+.aArvio {
+  list-style: none;
+}
+
+.aLista {
+  display: none;
+}
+
+.aKohde {
+  cursor: pointer;
+  font-size: x-large;
+}
+
+.aKuvaus,
+.aArvio {
+  font-size: large;
 }

@@ -124,7 +124,9 @@ function etsiKohde() {
 function muutaArviota() {
     const kohde = eNimi.value
     let paivitettyKuvaus = { kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) }
-
+    if (kohde == null || kohde == undefined || kohde == "") {
+        console.log('Tyhjää ei voi syöttää')
+    } else {
     if (uusiArvio.value < 1 || uusiArvio.value > 5) {
         arvioVirhe.innerHTML = `HUOM! Arvion pitää olla 1 ja 5 välillä puolen desimaalin tarkkuudella`
     } else {
@@ -158,7 +160,7 @@ function muutaArviota() {
             })
         arvioVirhe.innerHTML = "";
     }
-}
+}}
 
 //Listaa arvioidut kohteet kohtaan kaikki arvioidut kohteet
 function listaaArviot() {

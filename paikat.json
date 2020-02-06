@@ -8,16 +8,30 @@
         "paikka": "Salmisaari",
         "kuvaus": "Boulderia ja yläköysittelyä",
         "arvio": 2
-    }, 
+    },
     {
-        "paikka": "Perro", 
-        "kuvaus": "Average", 
+        "paikka": "Perro",
+        "kuvaus": "Average",
         "arvio": 3
     },
     {
-        "paikka":"ALOHA",
-        "kuvaus":"Babe",
-        "arvio":2
+        "paikka": "ALOHA",
+        "kuvaus": "Babe",
+        "arvio": 2
+    },
+    {
+        "paikka": "Keilaniemi",
+        "kuvaus": "",
+        "arvio": ""
+    },
+    {
+        "paikka": "Lauttasaari",
+        "kuvaus": "",
+        "arvio": ""
+    },
+    {
+        "paikka": "Kittilä",
+        "kuvaus": "",
+        "arvio": ""
     }
 ]
-

@@ -1,8 +1,28 @@
 body {
-  padding: 50px;
+  padding: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.aKohde,
+.aKuvaus,
+.aArvio {
+  list-style: none;
+}
+
+.aLista {
+  display: none;
+}
+
+.aKohde {
+  cursor: pointer;
+  font-size: x-large;
+}
+
+.aKuvaus,
+.aArvio {
+  font-size: large;
 }

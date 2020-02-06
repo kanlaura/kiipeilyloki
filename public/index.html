@@ -11,23 +11,19 @@
 <style>
     @import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Noto+Serif|Nunito+Sans:200,300,400,700,900&display=swap');
 </style>
-
+<script src="https://kit.fontawesome.com/705dc20d7a.js" crossorigin="anonymous"></script>
 <body>
     <div id="wrapper">
         <div id="kiipeilyLoki">
+            <div id="kiipeilyloki_hederi">
+                <h1>Mun KiipeilyLoki</h1>
+            </div>
+            <div id="uusikohde">
+                <h2>Lisää kohde toivelistalle</h2>
+                <input type="text" id="uusiNimi" name="uusiNimi"><button type="button" id="lisaa">Lisää kohde</button>
+            </div>
         </div>
-        <div id="kiipeilyloki_hederi">
-            <h1>Mun KiipeilyLoki</h1>
-        </div>
-        <div id="uusikohde">
-            <h2>Lisää kohde toivelistalle</h2>
-            <input type="text" id="uusiNimi" name="uusiNimi"><button type="button" id="lisaa">Lisää kohde</button>
-        </div>
-        <hr>
-        <div id="toivelista">
-            <h2>Toivelista</h2>
-            <ul id="output">
-            </ul>
+        <div id="background_image">
         </div>
         <div id="arvioidut">
             <h2>Arvioidut kohteet</h2>
@@ -38,29 +34,33 @@
                     <li class="aArvio" id="aArvio_style">Arvio</li>
                 </ul>
         </div>
+        <div id="toivelista">
+            <h2>Toivelista</h2>
+            <ul id="output">
+            </ul>
+        </div>
         <br>
         <div id="arvioilomake">
-            <h2>Arvioi kohde</h2>
-            <br>
-            <div id="arvioi_wrapper">
-                <div id="arvioilomake_labels">
-                    <label for="etsiNimi">Kohteen nimi</label><br>
-                    <label for="uusiKuvaus">Kohdekuvaus</label><br>
-                    <label for="uusiArvio" >Arvio 1-5</label><br>
-                </div>
-                <div id="arvioilomake_inputs">
-                    <input type="text" id="etsiNimi" name="etsiNimi"><br>
-                    <input type="text" id="uusiKuvaus" name="uusiKuvaus" value=""></input><br>
-                    <input type="number" id="uusiArvio" name="uusiArvio" min="1" max="5" value=""></input><br>
-                    <button type="button" id="arvioi">Lisää arvio</button>
-                    <span id="arvioLisatty"></span>
+                    <h2>Arvioi kohde</h2>
                     <br>
-                    <span id="arvioVirhe"></span>
-                    
-                </div>
-                <button type="button" id="etsi">Etsi kohde...</button>
-                <span id="eikohdetta"></span>
-            </div>
+                    <div id="arvioi_wrapper">
+                        <div id="arvioilomake_labels">
+                            <label for="etsiNimi">Kohteen nimi</label><br>
+                            <label for="uusiKuvaus">Kohdekuvaus</label><br>
+                            <label for="uusiArvio" >Arvio 1-5</label><br>
+                        </div>
+                        <div id="arvioilomake_inputs">
+                            <input type="text" id="etsiNimi" name="etsiNimi"><br>
+                            <input type="text" id="uusiKuvaus" name="uusiKuvaus" value=""><br>
+                            <input type="number" id="uusiArvio" name="uusiArvio" min="1" max="5" value=""></input><br>
+                            <div id="palaute">
+                                <button type="button" id="arvioi">Lisää arvio</button></input><span id="eikohdetta"></span><span id="arvioLisatty"></span><span id="arvioVirhe"></span>  
+                            </div>                
+                        </div>
+                        <button type="button" id="etsi">Etsi nimellä</button>
+                    </div>
+        </div>
+        <div id="wrapperkaksi">
         </div>
         <script src="javascripts/default.js"></script>
 </body>

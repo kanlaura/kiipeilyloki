@@ -13,14 +13,13 @@ const lisaaNappi = document.getElementById("lisaa");
 //kentät
 const pVastaus = document.getElementById('poistaVastaus');
 const arvostelut = document.getElementById('arvostelut');
-const toiveLista = document.getElementById("output");
 const toive = document.getElementById("output");
 const uusiNimi = document.getElementById("uusiNimi");
 const eiKohdetta = document.getElementById("eikohdetta");
 const arvioVirhe = document.getElementById("arvioVirhe");
 
 //eventlistenerit
-toiveLista.addEventListener('click', poistaKohde);
+toive.addEventListener('click', poistaKohde);
 etsiNappi.addEventListener('click', etsiKohde);
 arvioiNappi.addEventListener('click', muutaArviota);
 arvostelut.addEventListener('click', naytaKuvaus);
@@ -49,18 +48,22 @@ myFunction();
 //käyttäjä lisää selaimessa uuden kohteen listalle.
 //Tämä scripti lisää sen POStilla paikat.jsoniin (H.V. ja D.B)
 function addMesta() {
-    let title = uusiNimi.value
-    fetch("./api/mestat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ paikka: title, kuvaus: "", arvio: 0 })
-    })
-        .then(res => res.json())
+    if (uusiNimi.value == '' || uusiNimi.value == '') {
+        console.log('Tyhjää ei voi syöttää')
+    } else {
+        let title = uusiNimi.value
+        fetch("./api/mestat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ paikka: title, kuvaus: "", arvio: 0 })
+        })
+            .then(res => res.json())
 
-    //tämä on GET pyyntö palauttaa lisäyksen jälkeen näkyviin toivelistalle paikat, 
-    //jolla ei ole arviota (H.V. ja D.B)
-    myFunction();
-    uusiNimi.value ="";
+        //tämä on GET pyyntö palauttaa lisäyksen jälkeen näkyviin toivelistalle paikat, 
+        //jolla ei ole arviota (H.V. ja D.B)
+        myFunction();
+        uusiNimi.value = "";
+    }
 }
 
 
@@ -93,62 +96,69 @@ function poistaKohde(event) {
 
 //Etsi kohteen kaikki tiedot klikkaamalla "Etsi kohde Arvioi kohde kohdassa"
 function etsiKohde() {
-    const kohde = eNimi.value
+    if (uusiNimi.value == null || uusiNimi.value == undefined) {
+        console.log('Tyhjää ei voi syöttää')
+    } else {
+        const kohde = eNimi.value
 
-    fetch(`http://localhost:3000/api/mestat/${kohde}`)
-        .then(function (res) {
-            return res.json();
-        })
-        .then((json) => {
-            if (json == `{'msg': 'Ei sellaista kohdetta!'}`) {
-                console.log(`Kohdetta ei löytynyt`);
-                eiKohdetta.innerHTML = "Kohdetta ei löytynyt."
-            } else {
-                uusiKuvaus.value = json.kuvaus;
-                uusiArvio.value = json.arvio;
-                console.log(json.paikka);
-                console.log(json.arvio);
-            }
-            return;
-        })
+        fetch(`http://localhost:3000/api/mestat/${kohde}`)
+            .then(function (res) {
+                return res.json();
+            })
+            .then((json) => {
+                if (json == `{'msg': 'Ei sellaista kohdetta!'}`) {
+                    console.log(`Kohdetta ei löytynyt`);
+                    eiKohdetta.innerHTML = "Kohdetta ei löytynyt."
+                } else {
+                    uusiKuvaus.value = json.kuvaus;
+                    uusiArvio.value = json.arvio;
+                    console.log(json.paikka);
+                    console.log(json.arvio);
+                }
+                return;
+            })
+    }
 }
 
 function muutaArviota() {
     const kohde = eNimi.value
     let paivitettyKuvaus = { kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) }
-
-    if (uusiArvio.value <1 || uusiArvio.value>5) {
-        arvioVirhe.innerHTML=`HUOM! Arvion pitää olla 1 ja 5 välillä`
+    if (kohde == null || kohde == undefined || kohde == "") {
+        console.log('Tyhjää ei voi syöttää')
+    } else {
+    if (uusiArvio.value < 1 || uusiArvio.value > 5) {
+        arvioVirhe.innerHTML = `HUOM! Arvion pitää olla 1 ja 5 välillä puolen desimaalin tarkkuudella`
     } else {
 
-    fetch(`http://localhost:3000/api/mestat/${kohde}`)
-        .then(function (res) {
-            return res.json();
-        })
-        .then((json) => {
-            if (json == `{'msg': 'Ei sellaista kohdetta!'}`) {
-                console.log(`Kohdetta ei löytynyt`);
-                fetch("./api/mestat", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ paikka: kohde, kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) })
-                })
-                    .then(res => res.json())
-            } else {
-                fetch(`http://localhost:3000/api/mestat/${kohde}`, {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(paivitettyKuvaus)
-                }).then(res => res.json()).then(message => {
-                    console.log(message);
-                })
-                eiKohdetta.innerHTML="Kohde haettu."
-            }
-            listaaArviot();
-            myFunction();
-            return;
-        })
-        arvioVirhe.innerHTML="";
+        fetch(`http://localhost:3000/api/mestat/${kohde}`)
+            .then(function (res) {
+                return res.json();
+            })
+            .then((json) => {
+                if (json == `{'msg': 'Ei sellaista kohdetta!'}`) {
+                    console.log(`Kohdetta ei löytynyt`);
+                    fetch("./api/mestat", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ paikka: kohde, kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) })
+                    })
+                        .then(res => res.json())
+                } else {
+                    fetch(`http://localhost:3000/api/mestat/${kohde}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(paivitettyKuvaus)
+                    }).then(res => res.json()).then(message => {
+                        console.log(message);
+                    })
+                    eiKohdetta.innerHTML = "Arvio tallennettu."
+                }
+                listaaArviot();
+                myFunction();
+                return;
+            })
+        arvioVirhe.innerHTML = "";
+    }
 }}
 
 //Listaa arvioidut kohteet kohtaan kaikki arvioidut kohteet
@@ -173,15 +183,27 @@ function listaaArviot() {
                             case 1:
                                 tahtiArvio = '★'
                                 break;
+                            // case 1.5:
+                            //     tahtiArvio = '★'
+                            //     break;
                             case 2:
                                 tahtiArvio = '★★'
                                 break;
+                            // case 2.5:
+                            //     tahtiArvio = `★★½`
+                            //     break;
                             case 3:
                                 tahtiArvio = '★★★'
                                 break;
+                            // case 3.5:
+                            //     tahtiArvio = '★★★½'
+                            //     break;
                             case 4:
                                 tahtiArvio = '★★★★'
                                 break;
+                            // case 4.5:
+                            //     tahtiArvio = '★★★★½'
+                            //     break;
                             case 5:
                                 tahtiArvio = '★★★★★'
                                 break;

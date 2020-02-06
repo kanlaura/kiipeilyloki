@@ -188,6 +188,7 @@ function listaaArviot() {
             eNimi.value=""
             uusiKuvaus.value=""
             uusiArvio.value=""
+            eiKohdetta.innerHTML=""
             return;
         })
 }

@@ -13,14 +13,13 @@ const lisaaNappi = document.getElementById("lisaa");
 //kentät
 const pVastaus = document.getElementById('poistaVastaus');
 const arvostelut = document.getElementById('arvostelut');
-const toiveLista = document.getElementById("output");
 const toive = document.getElementById("output");
 const uusiNimi = document.getElementById("uusiNimi");
 const eiKohdetta = document.getElementById("eikohdetta");
 const arvioVirhe = document.getElementById("arvioVirhe");
 
 //eventlistenerit
-toiveLista.addEventListener('click', poistaKohde);
+toive.addEventListener('click', poistaKohde);
 etsiNappi.addEventListener('click', etsiKohde);
 arvioiNappi.addEventListener('click', muutaArviota);
 arvostelut.addEventListener('click', naytaKuvaus);

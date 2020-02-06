@@ -1,1 +1,32 @@
-[{"paikka":"El Chorro","kuvaus":"The best","arvio":"5"},{"paikka":"Salmisaari","kuvaus":"Boulderia ja yläköysittelyä","arvio":2},{"paikka":"Perro","kuvaus":"jee jee","arvio":1},{"paikka":"ALOHA","kuvaus":"Babe","arvio":2},{"paikka":"Keilaniemi","kuvaus":"Kylmää","arvio":2},{"paikka":"Rocky mountains","kuvaus":"Tosi kivistä","arvio":3}]
+[
+    {
+        "paikka": "El Chorro",
+        "kuvaus": "The best",
+        "arvio": 5
+    },
+    {
+        "paikka": "Salmisaari",
+        "kuvaus": "Boulderia ja yläköysittelyä",
+        "arvio": 2
+    },
+    {
+        "paikka": "Perro",
+        "kuvaus": "jee jee",
+        "arvio": 1
+    },
+    {
+        "paikka": "ALOHA",
+        "kuvaus": "Babe",
+        "arvio": 2
+    },
+    {
+        "paikka": "Keilaniemi",
+        "kuvaus": "Kylmää",
+        "arvio": 2
+    },
+    {
+        "paikka": "Rocky mountains",
+        "kuvaus": "Tosi kivistä",
+        "arvio": 3
+    }
+]

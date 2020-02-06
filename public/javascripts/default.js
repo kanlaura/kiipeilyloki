@@ -31,14 +31,11 @@ function myFunction() {
     fetch("./api/mestat")
         .then(res => res.json())
         .then(paikat => {
-            //console.log(paikat)
             let output = ""
             for (i = 0; i < paikat.length; i++) {
                 if (paikat[i].arvio == 0) {
-                    output += `<li><span>${paikat[i].paikka}<button id="poistaNappi">❌</button></span></li>`
+                    output += `<li><span>${paikat[i].paikka}</span><button id="poistaNappi">❌</button></li>`
                 };
-                //console.log(paikat[i].paikka)
-
             }
             toive.innerHTML = output;
         })
@@ -49,21 +46,34 @@ myFunction();
 //käyttäjä lisää selaimessa uuden kohteen listalle.
 //Tämä scripti lisää sen POStilla paikat.jsoniin (H.V. ja D.B)
 function addMesta() {
-    if (uusiNimi.value == '' || uusiNimi.value == '') {
+    if (uusiNimi.value == null || uusiNimi.value == undefined || uusiNimi.value == "") {
         console.log('Tyhjää ei voi syöttää')
     } else {
-        let title = uusiNimi.value
-        fetch("./api/mestat", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ paikka: title, kuvaus: "", arvio: 0 })
-        })
-            .then(res => res.json())
+        const kohde = uusiNimi.value
 
-        //tämä on GET pyyntö palauttaa lisäyksen jälkeen näkyviin toivelistalle paikat, 
-        //jolla ei ole arviota (H.V. ja D.B)
-        myFunction();
-        uusiNimi.value = "";
+        fetch(`http://localhost:3000/api/mestat/${kohde}`)
+            .then(function (res) {
+                return res.json();
+            })
+            .then((json) => {
+                if (kohde == json.paikka) {
+                    console.log(`Kohde on jo olemassa`);
+                    uusiNimi.value = `${kohde} on jo listalla!!!`
+                } else {
+                    let title = uusiNimi.value
+                    fetch("./api/mestat", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ paikka: title, kuvaus: "", arvio: 0 })
+                    })
+                        .then(res => res.json())
+
+                    //tämä on GET pyyntö palauttaa lisäyksen jälkeen näkyviin toivelistalle paikat, 
+                    //jolla ei ole arviota (H.V. ja D.B)
+                    myFunction();
+                    uusiNimi.value = "";
+                }
+            })
     }
 }
 
@@ -74,30 +84,35 @@ listaaArviot();
 
 // Poistaa kohteen JSON-tiedostosta
 function poistaKohde(event) {
-    const kohde = event.path[1].children[0].innerText
-    console.log(event.path[1].children[0].innerText)
+    console.dir(event.target.localName)
+    if (event.target.localName == 'button') {
 
-    fetch(`http://localhost:3000/api/mestat/${kohde}`, {
-        method: 'DELETE',
-    })
-        .then(function (res) {
-            return res.json();
+        console.log(event.path[1].children[1])
+        const kohde = event.path[1].children[0].innerText
+        console.log(event.path[1].children[0].innerText)
+
+        fetch(`http://localhost:3000/api/mestat/${kohde}`, {
+            method: 'DELETE',
         })
-        .then((json) => {
-            if (json == 'kohde poistettu') {
-                console.log(`${kohde} poistettu toivelistalta`);
-            } else {
-                console.log(`Kohdetta ei löytynyt`);
-            }
-            return;
-        })
-    myFunction();
+            .then(function (res) {
+                return res.json();
+            })
+            .then((json) => {
+                if (json == 'kohde poistettu') {
+                    console.log(`${kohde} poistettu toivelistalta`);
+                } else {
+                    console.log(`Kohdetta ei löytynyt`);
+                }
+                return;
+            })
+        myFunction();
+    }
 };
 
 
 //Etsi kohteen kaikki tiedot klikkaamalla "Etsi kohde Arvioi kohde kohdassa"
 function etsiKohde() {
-    if (uusiNimi.value == null || uusiNimi.value == undefined) {
+    if (uusiNimi.value == null || uusiNimi.value == undefined || uusiNimi.value == " ") {
         console.log('Tyhjää ei voi syöttää')
     } else {
         const kohde = eNimi.value
@@ -134,43 +149,43 @@ function muutaArviota() {
     if (kohde == null || kohde == undefined || kohde == "") {
         console.log('Tyhjää ei voi syöttää')
     } else {
-    if (uusiArvio.value < 1 || uusiArvio.value > 5) {
-        arvioVirhe.innerHTML = `HUOM! Arvion pitää olla 1 ja 5 välillä puolen desimaalin tarkkuudella`
-    } else {
+        if (uusiArvio.value < 1 || uusiArvio.value > 5) {
+            arvioVirhe.innerHTML = `HUOM! Arvion pitää olla 1 ja 5 välillä puolen desimaalin tarkkuudella`
+        } else {
 
-        fetch(`http://localhost:3000/api/mestat/${kohde}`)
-            .then(function (res) {
-                return res.json();
-            })
-            .then((json) => {
-                if (json == `{'msg': 'Ei sellaista kohdetta!'}`) {
-                    console.log(`Kohdetta ei löytynyt`);
-                    fetch("./api/mestat", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ paikka: kohde, kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) })
-                    })
-                        .then(res => res.json())
-                } else {
-                    fetch(`http://localhost:3000/api/mestat/${kohde}`, {
-                        method: "PUT",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(paivitettyKuvaus)
-                    }).then(res => res.json()).then(message => {
-                        console.log(message);
-                    })
-                    eiKohdetta.innerHTML = "Arvio tallennettu."
-                }
-                listaaArviot();
-                myFunction();
-                arvioVirhe.innerHTML="";
-                eiKohdetta.innerHTML="";
-                arvioLisatty.innerHTML="Kohde päivitetty listaan.";
-                return;
-            })
-        arvioVirhe.innerHTML = "";
+            fetch(`http://localhost:3000/api/mestat/${kohde}`)
+                .then(function (res) {
+                    return res.json();
+                })
+                .then((json) => {
+                    if (json == `{'msg': 'Ei sellaista kohdetta!'}`) {
+                        console.log(`Kohdetta ei löytynyt`);
+                        fetch("./api/mestat", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ paikka: kohde, kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) })
+                        })
+                            .then(res => res.json())
+                    } else {
+                        fetch(`http://localhost:3000/api/mestat/${kohde}`, {
+                            method: "PUT",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(paivitettyKuvaus)
+                        }).then(res => res.json()).then(message => {
+                            console.log(message);
+                        })
+                        eiKohdetta.innerHTML = "Arvio tallennettu."
+                    }
+                    listaaArviot();
+                    myFunction();
+                    return;
+                })
+            arvioVirhe.innerHTML = "";
+            eiKohdetta.innerHTML="";
+            arvioLisatty.innerHTML="Kohde päivitetty listaan.";
+        }
     }
-}}
+}
 
 //Listaa arvioidut kohteet kohtaan kaikki arvioidut kohteet
 function listaaArviot() {
@@ -251,7 +266,7 @@ function listaaArviot() {
 
 function naytaKuvaus(event) {
     const kuvaus = event.target.lastChild;
-    if (kuvaus.style.display == 'none') {
+    if (kuvaus.style.display == 'none' || kuvaus.style.display == "") {
         kuvaus.style.display = 'block';
     } else {
         kuvaus.style.display = 'none';

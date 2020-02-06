@@ -13,9 +13,10 @@ const arvioiNappi = document.getElementById('arvioi');
 //kentät
 const pVastaus = document.getElementById('poistaVastaus');
 const arvostelut = document.getElementById('arvostelut');
+const toiveLista = document.getElementById("output");
 
 //eventlistenerit
-// poistaNappi.addEventListener('click', poistaKohde);
+toiveLista.addEventListener('click', poistaKohde);
 etsiNappi.addEventListener('click', etsiKohde);
 arvioiNappi.addEventListener('click', muutaArviota);
 arvostelut.addEventListener('click', naytaKuvaus);
@@ -30,9 +31,8 @@ function myFunction() {
             let output = ""
             for (i = 0; i < paikat.length; i++) {
                 if (paikat[i].arvio == 0) {
-                    output += `<li>${paikat[i].paikka}</li>`
-                }
-                ;
+                    output += `<li><p>${paikat[i].paikka}</p><button id="poistaNappi">Deleta</button></li>`
+                };
                 //console.log(paikat[i].paikka)
             }
             document.getElementById("output").innerHTML = output;
@@ -55,30 +55,19 @@ function addMesta() {
 
     //tämä on GET pyyntö palauttaa lisäyksen jälkeen näkyviin toivelistalle paikat, 
     //jolla ei ole arviota (H.V. ja D.B)
-    fetch("./api/mestat")
-        .then(res => res.json())
-        .then(paikat => {
-            //console.log(paikat)
-            let output = ""
-            for (i = 0; i < paikat.length; i++) {
-                if (paikat[i].arvio == 0 || paikat[i].kuvaus == "") {
-                    output += `<li>${paikat[i].paikka}</li>`
-                }
-                ;
-                //console.log(paikat[i].paikka)
-            }
-            document.getElementById("output").innerHTML = output;
-        })
+    myFunction();
 }
 
 
 
 //Kutsuu ajantasaista listaa kaikista kohteista
-listaaArviot()
+listaaArviot();
 
 // Poistaa kohteen JSON-tiedostosta
-function poistaKohde() {
-    const kohde = pNimi.value
+function poistaKohde(event) {
+    const kohde = event.path[1].children[0].innerText
+    console.log(event.path[1].children[0].innerText)
+
     fetch(`http://localhost:3000/api/mestat/${kohde}`, {
         method: 'DELETE',
     })
@@ -87,12 +76,13 @@ function poistaKohde() {
         })
         .then((json) => {
             if (json == 'kohde poistettu') {
-                pVastaus.innerHTML = `${kohde} poistettu toivelistalta`
+                console.log(`${kohde} poistettu toivelistalta`);
             } else {
-                pVastaus.innerHTML = `Kohdetta ei löytynyt`
+                console.log(`Kohdetta ei löytynyt`);
             }
             return;
         })
+    myFunction();
 };
 
 
@@ -143,7 +133,8 @@ function muutaArviota() {
                     console.log(message);
                 })
             }
-            listaaArviot()
+            listaaArviot();
+            myFunction();
             return;
         })
 

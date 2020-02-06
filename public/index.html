@@ -49,17 +49,21 @@
     <div id="arvioilomake">
         <h2>Arvioi kohde</h2>
         <br>
-        <label for="etsiNimi">Kohteen nimi</label>
-        <input type="text" id="etsiNimi" name="etsiNimi">
-        <button id="etsi">Etsi kohde</button>
-        <br><br>
-        <label for="uusiKuvaus">Kohdekuvaus</label>
-        <input type="text" id="uusiKuvaus" name="uusiKuvaus" value=""></input>
-        <br><br>
-        <label for="uusiArvio">Arvio 0-5</label>
-        <input type="number" id="uusiArvio" name="uusiArvio" value=""></input>
-        <br><br>
-        <button type="button" id="arvioi">Lisää arvio</button>
+        
+            <label for="etsiNimi">Kohteen nimi</label>
+            <input type="text" id="etsiNimi" name="etsiNimi">
+            <button id="etsi" type="button">Etsi kohde</button>
+            <span id="eikohdetta"></span>
+            <br><br>
+            <label for="uusiKuvaus">Kohdekuvaus</label>
+            <input type="text" id="uusiKuvaus" name="uusiKuvaus" value=""></input>
+            <br><br>
+            <label for="uusiArvio">Arvio 1-5</label>
+            <input type="number" id="uusiArvio" name="uusiArvio"  min="1" max="5"></input>
+            <br><span id="arvioVirhe"></span> 
+            <br><br>
+            <button type="button" id="arvioi">Lisää arvio</button>
+        
     </div>
     <!-- <hr>
          <div id="poista">

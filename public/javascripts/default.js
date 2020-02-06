@@ -14,8 +14,10 @@ const lisaaNappi = document.getElementById("lisaa");
 //kentät
 const pVastaus = document.getElementById('poistaVastaus');
 const arvostelut = document.getElementById('arvostelut');
-const toive = document.getElementById("output")
-const uusiNimi = document.getElementById("uusiNimi")
+const toive = document.getElementById("output");
+const uusiNimi = document.getElementById("uusiNimi");
+const eiKohdetta = document.getElementById("eikohdetta");
+const arvioVirhe = document.getElementById("arvioVirhe");
 
 //eventlistenerit
 // poistaNappi.addEventListener('click', poistaKohde);
@@ -117,10 +119,12 @@ function etsiKohde() {
         .then((json) => {
             if (json == `{'msg': 'Ei sellaista kohdetta!'}`) {
                 console.log(`Kohdetta ei löytynyt`);
+                eiKohdetta.innerHTML="Kohdetta ei löytynyt."
             } else {
                 uusiKuvaus.value += json.kuvaus;
                 uusiArvio.value += json.arvio;
                 console.log(json.paikka);
+                eiKohdetta.innerHTML="Kohde haettu."
             }
             return;
         })
@@ -173,15 +177,18 @@ function listaaArviot() {
 
 
 function muutaArviota() {
-    let paivitettyKuvaus = { kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) }
+    let paivitettyKuvaus = { kuvaus: uusiKuvaus.value, arvio: uusiArvio.value}
     const kohde = eNimi.value;
-
+    if (uusiArvio.value <1 || uusiArvio.value>5) {
+        arvioVirhe.innerHTML=`HUOM! Arvion pitää olla 1 ja 5 välillä`
+    } else {
     fetch(`http://localhost:3000/api/mestat/${kohde}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(paivitettyKuvaus)
-    }).then(res => res.json()).then(message => {
+    }) .then(res => res.json()).then(message => {
         console.dir(message);
+        arvioVirhe.innerHTML="";     
     })
 }
-
+}

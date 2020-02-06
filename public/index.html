@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,44 @@
     <link rel="stylesheet" href="./stylesheets/style.css">
     <title>Kiipeilyloki</title>
 </head>
+<style>
+   @import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Noto+Serif|Nunito+Sans:400,700,900&display=swap');
+</style>
+
 <body>
-    <h1>My KiipeilyLoki</h1>
-    <br>
-    <div id="uusikohde">
-        <h2>Lisää kohde toivelistalle</h2>
-        <label for="uusiNimi">Kohteen nimi</label>
-        <input type="text" id="uusiNimi" name="uusiNimi">
-        <br><br>
-        <button type="button" id="lisaa">Lisää kohde</button>
-        <br><br>
-        <hr>
-        <br>
-    </div>
-    <div id="toivelista">
-        <h2>Toivelista</h2>
-        <ul id="output">
-            <li>testi testi</li>
-            <li>testi testi</li>
-            <li>testi testi</li>
-            <li>testi testi</li>
-            <li>testi testi</li>
+    <div id="wrapper">
+        <div id="kiipeilyLoki">
+        </div>
+        <div id="kiipeilyloki_hederi">
+            <h1>My KiipeilyLoki</h1>
+        </div>
+            <div id="uusikohde">
+                <h2>Lisää kohde toivelistalle</h2>
+                <label for="uusiNimi">Kohteen nimi</label>
+                <input type="text" id="uusiNimi" name="uusiNimi"><button type="button" id="lisaa">Lisää kohde</button>
+            </div>
+            <div id="toivelista">
+                <h2>Toivelista</h2>
+                <ul id="output">
+                    <li>testi testi</li>
+                    <li>testi testi</li>
+                    <li>testi testi</li>
+                    <li>testi testi</li>
+                    <li>testi testi</li>
+                </ul>
+            </div>
+     <br>
+    <div id="arvioidut">
+        <h2>Arvioidut kohteet</h2>
+        <ul id="arvostelut">
+            <li class="aKohde">Kohde</li>
+            <ul class="aLista">
+                <li class="aKuvaus">Kuvaus</li>
+                <li class="aArvio">Arvio</li>
+            </ul>
         </ul>
-    </div>
+    </div> 
     <br>
-    <hr>
     <div id="arvioilomake">
         <h2>Arvioi kohde</h2>
         <br>
@@ -47,21 +61,8 @@
         <br><br>
         <button type="button" id="arvioi">Lisää arvio</button>
     </div>
-    <br>
-    <hr>
-    <div id="arvioidut">
-        <h2>Arvioidut kohteet</h2>
-        <ul id="arvostelut">
-            <li class="aKohde">Kohde</li>
-            <ul class="aLista">
-                <li class="aKuvaus">Kuvaus</li>
-                <li class="aArvio">Arvio</li>
-            </ul>
-        </ul>
-    </div>
-    <br>
-    <hr>
-        <div id="poista">
+    <!-- <hr>
+         <div id="poista">
             <h2>Poista kohde</h2>
             <br>
             <label for="nimi">Kohteen nimi</label>
@@ -70,8 +71,10 @@
             <button type="button" id="poistaNappi">Poista kohde</button>
             <br><br>
             <div id="poistaVastaus"></div>
-        </div>
-    </div>
+        </div> --> 
+    <!-- </div> -->
+    </div> 
     <script src="javascripts/default.js"></script>
 </body>
+
 </html>

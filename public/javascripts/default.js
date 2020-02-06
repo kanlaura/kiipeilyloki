@@ -35,7 +35,7 @@ function myFunction() {
             let output = ""
             for (i = 0; i < paikat.length; i++) {
                 if (paikat[i].arvio == 0) {
-                    output += `<li><p>${paikat[i].paikka}</p><button id="poistaNappi">Deleta</button></li>`
+                    output += `<li><p>${paikat[i].paikka}</p><button id="poistaNappi">❌</button></li>`
                 };
                 //console.log(paikat[i].paikka)
 

@@ -9,7 +9,7 @@
     <title>Kiipeilyloki</title>
 </head>
 <style>
-   @import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Noto+Serif|Nunito+Sans:400,700,900&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Noto+Serif|Nunito+Sans:200,300,400,700,900&display=swap');
 </style>
 
 <body>
@@ -17,63 +17,52 @@
         <div id="kiipeilyLoki">
         </div>
         <div id="kiipeilyloki_hederi">
-            <h1>My KiipeilyLoki</h1>
+            <h1>Mun KiipeilyLoki</h1>
         </div>
-            <div id="uusikohde">
-                <h2>Lisää kohde toivelistalle</h2>
-                <label for="uusiNimi">Kohteen nimi</label>
-                <input type="text" id="uusiNimi" name="uusiNimi"><button type="button" id="lisaa">Lisää kohde</button>
-            </div>
-            <div id="toivelista">
-                <h2>Toivelista</h2>
-                <ul id="output">
-                </ul>
-            </div>
-     <br>
-    <div id="arvioidut">
-        <h2>Arvioidut kohteet</h2>
-        <ul id="arvostelut">
-            <li class="aKohde">Kohde</li>
-            <ul class="aLista">
-                <li class="aKuvaus">Kuvaus</li>
-                <li class="aArvio">Arvio</li>
+        <div id="uusikohde">
+            <h2>Lisää kohde toivelistalle</h2>
+            <input type="text" id="uusiNimi" name="uusiNimi"><button type="button" id="lisaa">Lisää kohde</button>
+        </div>
+        <hr>
+        <div id="toivelista">
+            <h2>Toivelista</h2>
+            <ul id="output">
             </ul>
-        </ul>
-    </div> 
-    <br>
-    <div id="arvioilomake">
-        <h2>Arvioi kohde</h2>
+        </div>
+        <div id="arvioidut">
+            <h2>Arvioidut kohteet</h2>
+            <ul id="arvostelut">
+                <li class="aKohde">Kohde</li>
+                <ul class="aLista">
+                    <li class="aKuvaus">Kuvaus</li>
+                    <li class="aArvio" id="aArvio_style">Arvio</li>
+                </ul>
+        </div>
         <br>
-        
-            <label for="etsiNimi">Kohteen nimi</label>
-            <input type="text" id="etsiNimi" name="etsiNimi">
-            <button id="etsi" type="button">Etsi kohde</button>
-            <span id="eikohdetta"></span>
-            <br><br>
-            <label for="uusiKuvaus">Kohdekuvaus</label>
-            <input type="text" id="uusiKuvaus" name="uusiKuvaus" value=""></input>
-            <br><br>
-            <label for="uusiArvio">Arvio 1-5</label>
-            <input type="number" id="uusiArvio" name="uusiArvio"  min="1" max="5"></input>
-            <br><span id="arvioVirhe"></span> 
-            <br><br>
-            <button type="button" id="arvioi">Lisää arvio</button>
-        
-    </div>
-    <!-- <hr>
-         <div id="poista">
-            <h2>Poista kohde</h2>
+        <div id="arvioilomake">
+            <h2>Arvioi kohde</h2>
             <br>
-            <label for="nimi">Kohteen nimi</label>
-            <input type="text" id="poistaNimi" name="poistaNimi">
-            <br><br>
-            <button type="button" id="poistaNappi">Poista kohde</button>
-            <br><br>
-            <div id="poistaVastaus"></div>
-        </div> --> 
-    <!-- </div> -->
-    </div> 
-    <script src="javascripts/default.js"></script>
+            <div id="arvioi_wrapper">
+                <div id="arvioilomake_labels">
+                    <label for="etsiNimi">Kohteen nimi</label><br>
+                    <label for="uusiKuvaus">Kohdekuvaus</label><br>
+                    <label for="uusiArvio" >Arvio 1-5</label><br>
+                </div>
+                <div id="arvioilomake_inputs">
+                    <input type="text" id="etsiNimi" name="etsiNimi"><br>
+                    <input type="text" id="uusiKuvaus" name="uusiKuvaus" value=""></input><br>
+                    <input type="number" id="uusiArvio" name="uusiArvio" min="1" max="5" value=""></input><br>
+                    <button type="button" id="arvioi">Lisää arvio</button>
+                    <span id="arvioLisatty"></span>
+                    <br>
+                    <span id="arvioVirhe"></span>
+                    
+                </div>
+                <button type="button" id="etsi">Etsi kohde...</button>
+                <span id="eikohdetta"></span>
+            </div>
+        </div>
+        <script src="javascripts/default.js"></script>
 </body>
 
 </html>

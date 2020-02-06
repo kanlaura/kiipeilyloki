@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 2em;
@@ -73,3 +73,24 @@ a {
   margin-left: 10px;
 }
 
+/* TOISET MUUTOKSET // TARKASTA */
+
+.aKohde,
+.aKuvaus,
+.aArvio {
+  list-style: none;
+}
+
+.aLista {
+  display: none;
+}
+
+.aKohde {
+  cursor: pointer;
+  font-size: x-large;
+}
+
+.aKuvaus,
+.aArvio {
+  font-size: large;
+}

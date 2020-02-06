@@ -29,7 +29,7 @@ function myFunction(){
         //console.log(paikat)
         let output=""
         for (i=0; i<paikat.length; i++) {
-            if (paikat[i].arvio == ""){
+            if (paikat[i].arvio == 0){
                 console.log(paikat[i].paikka)
                 output += `<li>${paikat[i].paikka}</li>`
             }
@@ -49,7 +49,7 @@ function addMesta() {
     fetch("./api/mestat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ paikka: title, kuvaus: "", arvio: "" })
+        body: JSON.stringify({ paikka: title, kuvaus: "", arvio: 0})
     })
         .then(res => res.json())
         
@@ -62,7 +62,7 @@ function addMesta() {
         //console.log(paikat)
         let output=""
         for (i=0; i<paikat.length; i++) {
-            if (paikat[i].arvio == ""){
+            if (paikat[i].arvio == 0 || paikat[i].kuvaus == ""){
                 console.log(paikat[i].paikka)
                 output += `<li>${paikat[i].paikka}</li>`
             }
@@ -113,6 +113,7 @@ function etsiKohde() {
                 uusiKuvaus.value += json.kuvaus;
                 uusiArvio.value += json.arvio;
                 console.log(json.paikka);
+                console.log(json.arvio);
             }
             return;
         })
@@ -128,8 +129,9 @@ function listaaArviot() {
             arvostelut.innerHTML = '';
             if (json == `{'msg': 'Ei sellaista kohdetta!'}`) {
                 console.log(`Error`);
-            } else {
+            } else { 
                 for (let i = 0; i < json.length; i++) {
+                    if (json[i].arvio !== 0 && json[i].kuvaus !== "") {
                     const paikka = json[i].paikka;
                     const kuvaus = json[i].kuvaus;
                     const arvio = json[i].arvio;
@@ -172,7 +174,7 @@ function listaaArviot() {
                     uusiKuvaus.classList.add('aKuvaus');
                     uusiArvio.classList.add('aArvio');
                 }
-            }
+            }}
             return;
         })
 }
@@ -190,7 +192,7 @@ function naytaKuvaus(event) {
 
 
 function muutaArviota() {
-    let paivitettyKuvaus = { kuvaus: uusiKuvaus.value, arvio: uusiArvio.value }
+    let paivitettyKuvaus = { kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) }
     const kohde = eNimi.value;
 
     fetch(`http://localhost:3000/api/mestat/${kohde}`, {

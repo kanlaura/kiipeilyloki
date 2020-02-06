@@ -22,16 +22,26 @@
     {
         "paikka": "Keilaniemi",
         "kuvaus": "",
-        "arvio": ""
+        "arvio": 0
     },
     {
         "paikka": "Lauttasaari",
         "kuvaus": "",
-        "arvio": ""
+        "arvio": 0
     },
     {
         "paikka": "Kittilä",
         "kuvaus": "",
-        "arvio": ""
+        "arvio": 0
+    },
+    {
+        "paikka": "Kirkkonummi",
+        "kuvaus": "Kivaa lähellä",
+        "arvio": 0
+    },
+    {
+        "paikka": "Kalasatama",
+        "kuvaus": "Kiva kiva",
+        "arvio": 2
     }
 ]

@@ -160,7 +160,9 @@ font-weight: 400;
   width: 200px; 
 } 
 #etsi {
+  margin-left: 4px;
   min-width: 120px;
+  width: 150px;
   height: 30px;
   padding: 5px;
   color: white;
@@ -168,13 +170,16 @@ font-weight: 400;
   background-color: white;
   font-weight: 200;
   letter-spacing: 1px;
-  margin-left: 120px;
-  border: 1.5px solid white;
+  /* margin-left: 120px; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+  margin-top: 20px;
+  border: 2px solid #4d94ff;
   background-color: #4d94ff;
   border-radius: 5px;
   font-size: 12px;
 }
 #arvioi {
+  margin-left: 5px;
   min-width: 100px;
   padding: 5px;
   border: 2px solid black;
@@ -183,14 +188,15 @@ font-weight: 400;
   color:white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
   margin-top: 20px;
-  width: 157px;
+  width: 150px;
   font-weight: 600;
   letter-spacing: 1px;
   font-size: 12px;
   margin-right: 10px;
 }
 #palaute{
-  display: inline-block;
+  display: flex;
+  /* display: inline-block; */
   min-width: 330px;
 }
 
@@ -256,8 +262,6 @@ font-weight: 400;
   #output li {
     vertical-align: text-bottom;
   }
-
-
 .aKohde,
 .aKuvaus,
 .aArvio {
@@ -281,7 +285,10 @@ font-weight: 400;
   font-size: 20px;
   line-height: 22px;
 }
-@media only screen and (max-width: 1160px) {
+#arvioLisatty, #arvioVirhe, #eikohdetta {
+  margin-top: 30px;
+}
+@media only screen and (max-width: 1240px) {
   body {
       align-content: center;
       align-content: center;

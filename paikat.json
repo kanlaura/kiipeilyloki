@@ -1,1 +1,47 @@
-[{"paikka":"El Chorro","kuvaus":"The best","arvio":5},{"paikka":"Salmisaari","kuvaus":"Boulderia ja yläköysittelyä","arvio":2},{"paikka":"Perro","kuvaus":"Koirat syö eväät. Muuten ihan jees","arvio":2},{"paikka":"Keilaniemi","kuvaus":"Kylmää","arvio":2},{"paikka":"Rocky mountains","kuvaus":"Tosi kivistä","arvio":3},{"paikka":"Kallio","kuvaus":"","arvio":0},{"paikka":"Vuori","kuvaus":"","arvio":0},{"paikka":"Affis","kuvaus":"hieno paikka","arvio":5},{"paikka":"Fontaine bleua","kuvaus":"","arvio":0}]
+[
+    {
+        "paikka": "El Chorro",
+        "kuvaus": "The best",
+        "arvio": 5
+    },
+    {
+        "paikka": "Salmisaari",
+        "kuvaus": "Boulderia ja yläköysittelyä",
+        "arvio": 2
+    },
+    {
+        "paikka": "Perro",
+        "kuvaus": "Koirat syö eväät. Muuten ihan jees",
+        "arvio": 3
+    },
+    {
+        "paikka": "Rocky mountains",
+        "kuvaus": "Tosi kivistä",
+        "arvio": 3
+    },
+    {
+        "paikka": "Kallio",
+        "kuvaus": "",
+        "arvio": 0
+    },
+    {
+        "paikka": "Vuori",
+        "kuvaus": "",
+        "arvio": 0
+    },
+    {
+        "paikka": "Affis",
+        "kuvaus": "hieno paikka",
+        "arvio": 5
+    },
+    {
+        "paikka": "Fontaine bleua",
+        "kuvaus": "",
+        "arvio": 0
+    },
+    {
+        "paikka": "Keilaranta 4",
+        "kuvaus": "Huippuseuraa!!!",
+        "arvio": 5
+    }
+]

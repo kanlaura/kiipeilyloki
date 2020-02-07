@@ -203,7 +203,7 @@ font-weight: 400;
 
 #wrapperkaksi {
   grid-row: 8;
-  grid-column: 4 /span 1;
+  grid-column: 3 /span 2;
   /* background-color: cadetblue; */
   background-image: url("../images/kiipeily2.jpg");
   background-repeat: no-repeat;

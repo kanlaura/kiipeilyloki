@@ -112,6 +112,10 @@ function poistaKohde(event) {
 
 //Etsi kohteen kaikki tiedot klikkaamalla "Etsi kohde Arvioi kohde kohdassa"
 function etsiKohde() {
+    eiKohdetta.innerHTML = ""
+    arvioLisatty.innerHTML= ""
+    arvioVirhe.innerHTML = ""
+
     if (eNimi.value == null || eNimi.value == undefined || eNimi.value == "") {
         console.log('Tyhjää ei voi syöttää')
         eiKohdetta.innerHTML = "Tyhjää ei voi syöttää."
@@ -145,6 +149,9 @@ function etsiKohde() {
 }
 
 function muutaArviota() {
+    eiKohdetta.innerHTML = ""
+    arvioLisatty.innerHTML= ""
+    arvioVirhe.innerHTML = ""
     const kohde = eNimi.value
     let paivitettyKuvaus = { kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) }
     if (kohde == null || kohde == " " || kohde == "") {
@@ -168,6 +175,7 @@ function muutaArviota() {
                             body: JSON.stringify({ paikka: kohde, kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) })
                         })
                             .then(res => res.json())
+                            arvioLisatty.innerHTML = "Arvio tallennettu."
                     } else {
                         fetch(`http://localhost:3000/api/mestat/${kohde}`, {
                             method: "PUT",
@@ -176,7 +184,7 @@ function muutaArviota() {
                         }).then(res => res.json()).then(message => {
                             console.log(message);
                         })
-                        eiKohdetta.innerHTML = "Arvio tallennettu."
+                        arvioLisatty.innerHTML="Kohde päivitetty.";
                     }
                     listaaArviot();
                     myFunction();
@@ -184,7 +192,6 @@ function muutaArviota() {
                 })
             arvioVirhe.innerHTML = "";
             eiKohdetta.innerHTML="";
-            arvioLisatty.innerHTML="Kohde päivitetty listaan.";
         }
     }
 }

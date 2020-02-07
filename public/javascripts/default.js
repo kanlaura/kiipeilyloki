@@ -112,8 +112,13 @@ function poistaKohde(event) {
 
 //Etsi kohteen kaikki tiedot klikkaamalla "Etsi kohde Arvioi kohde kohdassa"
 function etsiKohde() {
-    if (uusiNimi.value == null || uusiNimi.value == undefined || uusiNimi.value == " ") {
+    eiKohdetta.innerHTML = ""
+    arvioLisatty.innerHTML= ""
+    arvioVirhe.innerHTML = ""
+
+    if (eNimi.value == null || eNimi.value == undefined || eNimi.value == "") {
         console.log('Tyhjää ei voi syöttää')
+        eiKohdetta.innerHTML = "Tyhjää ei voi syöttää."
     } else {
         const kohde = eNimi.value
 
@@ -127,7 +132,7 @@ function etsiKohde() {
                     eiKohdetta.innerHTML = "Kohdetta ei löytynyt."
                 } else {
                     if (json.arvio == 0){
-                        uusiArvio.value = null
+                        uusiArvio.value = 0
                         }                    
                         else {
                             uusiKuvaus.value=json.kuvaus
@@ -144,10 +149,14 @@ function etsiKohde() {
 }
 
 function muutaArviota() {
+    eiKohdetta.innerHTML = ""
+    arvioLisatty.innerHTML= ""
+    arvioVirhe.innerHTML = ""
     const kohde = eNimi.value
     let paivitettyKuvaus = { kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) }
-    if (kohde == null || kohde == undefined || kohde == "") {
+    if (kohde == null || kohde == " " || kohde == "") {
         console.log('Tyhjää ei voi syöttää')
+        arvioLisatty.innerHTML = "Tyhjää ei voi syöttää"
     } else {
         if (uusiArvio.value < 1 || uusiArvio.value > 5) {
             arvioVirhe.innerHTML = `HUOM! Arvion pitää olla 1 ja 5 välillä puolen desimaalin tarkkuudella`
@@ -166,6 +175,7 @@ function muutaArviota() {
                             body: JSON.stringify({ paikka: kohde, kuvaus: uusiKuvaus.value, arvio: parseInt(uusiArvio.value) })
                         })
                             .then(res => res.json())
+                            arvioLisatty.innerHTML = "Arvio tallennettu."
                     } else {
                         fetch(`http://localhost:3000/api/mestat/${kohde}`, {
                             method: "PUT",
@@ -174,7 +184,7 @@ function muutaArviota() {
                         }).then(res => res.json()).then(message => {
                             console.log(message);
                         })
-                        eiKohdetta.innerHTML = "Arvio tallennettu."
+                        arvioLisatty.innerHTML="Kohde päivitetty.";
                     }
                     listaaArviot();
                     myFunction();
@@ -182,7 +192,6 @@ function muutaArviota() {
                 })
             arvioVirhe.innerHTML = "";
             eiKohdetta.innerHTML="";
-            arvioLisatty.innerHTML="Kohde päivitetty listaan.";
         }
     }
 }
